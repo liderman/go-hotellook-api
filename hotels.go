@@ -16,7 +16,7 @@ type Hotel struct {
 	CntFloors        int               `json:"cntFloors" bson:"cntFloors"`
 	CntRooms         int               `json:"cntRooms" bson:"cntRooms"`
 	CntSuites        int               `json:"cntSuites" bson:"cntSuites"`
-	Distance         int               `json:"distance" bson:"distance"`
+	Distance         float64           `json:"distance" bson:"distance"`
 	Facilities       []int             `json:"facilities" bson:"facilities"`
 	Id               int               `json:"id" bson:"id"`
 	Link             string            `json:"link" bson:"link"`
@@ -24,8 +24,8 @@ type Hotel struct {
 	Name             map[string]string `json:"name" bson:"name"`
 	PhotoCount       int               `json:"photoCount" bson:"photoCount"`
 	Photos           []Photo           `json:"photos" bson:"photos"`
-	PhotosByRoomType map[int]int       `json:"photosByRoomType" bson:"photosByRoomType"`
-	PoiDistance      map[int]int       `json:"poi_distance" bson:"poi_distance"`
+	PhotosByRoomType map[string]int    `json:"photosByRoomType" bson:"photosByRoomType"`
+	PoiDistance      map[string]int    `json:"poi_distance" bson:"poi_distance"`
 	Popularity       int               `json:"popularity" bson:"popularity"`
 	Pricefrom        int               `json:"pricefrom" bson:"pricefrom"`
 	PropertyType     int               `json:"propertyType" bson:"propertyType"`
@@ -43,12 +43,12 @@ type Poi struct {
 	Id        int         `json:"id" bson:"id"`
 	Location  Coordinates `json:"location" bson:"location"`
 	Name      string      `json:"name" bson:"name"`
-	Rating    int         `json:"rating" bson:"rating"`
+	Rating    float64     `json:"rating" bson:"rating"`
 }
 
 type Geom struct {
-	Coordinates []float64 `json:"coordinates" bson:"coordinates"`
-	Type        string    `json:"type" bson:"type"`
+	Coordinates []interface{} `json:"coordinates" bson:"coordinates"`
+	Type        string        `json:"type" bson:"type"`
 }
 
 type Photo struct {

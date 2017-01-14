@@ -7,7 +7,7 @@ package hotellook
 //
 // Example URI:
 // http://engine.hotellook.com/api/v2/static/hotelTypes.json?language=ru&token=YOUR_TOKEN
-func (a *HotellookApi) HotelTypes(language string) (hotelTypes []string, err error) {
+func (a *HotellookApi) HotelTypes(language string) (hotelTypes map[int]string, err error) {
 	err = a.getJson(
 		"static/hotelTypes.json",
 		map[string]string{
