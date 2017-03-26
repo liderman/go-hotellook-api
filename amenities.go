@@ -1,5 +1,7 @@
 package hotellook
 
+import "fmt"
+
 type Amenity struct {
 	Id        int    `json:"id,string" bson:"id"`
 	Name      string `json:"name" bson:"name"`
@@ -13,7 +15,12 @@ type Amenity struct {
 //
 // Example URI:
 // http://engine.hotellook.com/api/v2/static/amenities.json?token=YOUR_TOKEN
-func (a *HotellookApi) Amenities() (amenities []Amenity, err error) {
-	err = a.getJson("static/amenities.json", map[string]string{}, &amenities)
+func (a *HotellookApi) Amenities(language string) (amenities []Amenity, err error) {
+	url := "static/amenities.json"
+	if language != "en" {
+		url = fmt.Sprintf("static/amenities/%s.json", language)
+	}
+
+	err = a.getJson(url, map[string]string{}, &amenities)
 	return
 }
